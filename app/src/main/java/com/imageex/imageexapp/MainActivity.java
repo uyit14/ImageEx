@@ -13,6 +13,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -174,6 +175,17 @@ public class MainActivity extends AppCompatActivity {
         if(isUpLoadImage){
             //api.saveImage(ImageHelper.photo(uri, getContext()))
         }
+    }
+
+    @OnClick(R.id.ivPicture)
+    void showFullImage(){
+        if( Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH ){
+            ivPicture.setSystemUiVisibility( View.SYSTEM_UI_FLAG_HIDE_NAVIGATION );
+
+        }
+        else if( Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB )
+            ivPicture.setSystemUiVisibility( View.STATUS_BAR_HIDDEN );
+        else{}
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
